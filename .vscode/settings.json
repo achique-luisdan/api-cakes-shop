@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Cakes Shop",
+            "database": "${workspaceFolder:api-cakes-shop}/data/database.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
