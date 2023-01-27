@@ -27,8 +27,8 @@ npm run build
 npm run start
 ```
 
-### Paso 5. Probar APIs
-
 > Consultar Promociones
 
 http://localhost:3000/api/promotions
+
+## Pruebas unitarias 💋
