@@ -15,7 +15,7 @@ afterAll(() => {
 });
 
 
-describe('PRODUCTOS', () => {
+describe('PROMOCIONES', () => {
 
     test('Crea nuevos productos', async () => {
         DATASETS.forEach (async PRODUCT => {
@@ -28,7 +28,7 @@ describe('PRODUCTOS', () => {
             expect(productCreated.price).toBe(product.price);
             expect(productCreated.id).toBeGreaterThan(0);
         });
-        const response = await request(app).get ('/api/products').send();
+        const response = await request(app).get ('/api/promotions').send();
         expect (response.statusCode).toBe(200)
         DATASETS.forEach (async PRODUCT => {
             const index: number | undefined = response.body.findIndex ( (product: { name: string; }) => {return product.name === PRODUCT.name })
@@ -39,7 +39,7 @@ describe('PRODUCTOS', () => {
         })
     });
 
-    test('Crear nueva promoción', async () => {
+    test('Crear nuevas promociones', async () => {
        let promotion: Promotion = new Promotion();
        promotion.name = 'Jueves de Feria';
        promotion.discount = 23.0;
@@ -50,7 +50,7 @@ describe('PRODUCTOS', () => {
        expect(promotionCreated?.id).toBeGreaterThan(0);
     });
 
-    test('Asociar productos a promoción', async () => {
+    test('Asociar promociones a productos', async () => {
         const name = 'Jueves de Feria';
         const discount = 23.0;
         let products: Product  [] =[];
@@ -67,9 +67,8 @@ describe('PRODUCTOS', () => {
                 promotionUpdated =  await promotionDelegate.addProducts (promotionCreated as Promotion, products);
             }
          })
-        const response = await request(app).get ('/api/products').send();
+        const response = await request(app).get ('/api/promotions').send();
         expect (response.statusCode).toBe(200)
     });
-
 
 });

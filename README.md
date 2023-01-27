@@ -32,3 +32,13 @@ npm run start
 http://localhost:3000/api/promotions
 
 ## Pruebas unitarias 💋
+
+```
+npm run test
+```
+
+* Crea nuevos productos
+
+* Crear nuevas promociones
+
+* Asociar promociones a productos

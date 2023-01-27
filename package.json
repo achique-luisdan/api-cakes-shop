@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "npm jest"
+    "test": "npx jest"
   },
   "keywords": [],
   "author": "",
