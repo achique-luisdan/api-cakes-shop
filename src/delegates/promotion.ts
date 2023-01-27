@@ -22,7 +22,12 @@ export class PromotionDelegate {
 
     async addProducts(promotion: Promotion, products: Product[]): Promise<Promotion> {
         promotion.products = products;
-        const promotionRepository= getRepository(Promotion)
-        return await promotionRepository.save(promotion);
+        const productRepository = getRepository(Product)
+        products.forEach (async product => {
+            product.promotions = [];
+            product.promotions.push(promotion);
+            await productRepository.save(product);
+        })
+        return promotion;
     }
 }
