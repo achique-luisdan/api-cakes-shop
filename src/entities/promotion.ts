@@ -14,6 +14,5 @@ export class Promotion {
     discount: number;
 
     @ManyToMany(() => Product)
-    @JoinTable()
     products: Product[]
 }

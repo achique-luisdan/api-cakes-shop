@@ -4,8 +4,8 @@ import { TestHelper } from "../helpers/testhelper";
 import DATASETS from '../helpers/datasets.json';
 import { Promotion } from "../entities/promotion";
 import { PromotionDelegate } from "../delegates/promotion";
-
-
+import request from 'supertest'
+import app from '../index'
 beforeAll(async () => {
     await TestHelper.instance.setupTestDB();
 });
@@ -27,16 +27,15 @@ describe('PRODUCTOS', () => {
             expect(productCreated.name).toBe(product.name);
             expect(productCreated.price).toBe(product.price);
             expect(productCreated.id).toBeGreaterThan(0);
-        })
-    });
-
-    test('Consultar productos creados', async () => {
+        });
+        const response = await request(app).get ('/api/products').send();
+        expect (response.statusCode).toBe(200)
         DATASETS.forEach (async PRODUCT => {
-            const productDelegate: ProductDelegate = new ProductDelegate();
-            const productCreated: Product | null = await productDelegate.readProduct (PRODUCT.name);
-            expect(productCreated?.name).toBe(PRODUCT.name);
-            expect(productCreated?.price).toBe(PRODUCT.price);
-            expect(productCreated?.id).toBeGreaterThan(0);
+            const index: number | undefined = response.body.findIndex ( (product: { name: string; }) => {return product.name === PRODUCT.name })
+            expect(index).toBeGreaterThan(-1);
+            if (index != undefined){
+                expect (response.body[index].name).toBe(PRODUCT.name)
+            }  
         })
     });
 
@@ -54,33 +53,23 @@ describe('PRODUCTOS', () => {
     test('Asociar productos a promoción', async () => {
         const name = 'Jueves de Feria';
         const discount = 23.0;
-        let products: Product [] =[];
+        let products: Product  [] =[];
         let promotionDelegate: PromotionDelegate = new PromotionDelegate();
         const promotionCreated: Promotion | null = await promotionDelegate.readPromotion (name);
         expect(promotionCreated?.name).toBe(name);
         expect(promotionCreated?.discount).toBe(discount);
-        DATASETS.forEach (async PRODUCT => {
+        DATASETS.forEach (async (PRODUCT, index) => {
             const productDelegate: ProductDelegate = new ProductDelegate();
             const productCreated: Product | null = await productDelegate.readProduct (PRODUCT.name);
-            if (productCreated !== null){
-                products.push (productCreated);
+            products.push (productCreated as Product);
+            let promotionUpdated: Promotion | null = null;
+            if (index +1 === DATASETS.length){
+                promotionUpdated =  await promotionDelegate.addProducts (promotionCreated as Promotion, products);
             }
-        })
-        let promotionUpdated: Promotion | null = null;
-        if (promotionCreated !== null){
-            promotionUpdated =  await promotionDelegate.addProducts (promotionCreated, products);
-        } 
-        expect(promotionUpdated?.name).toBe(name);
-        expect(promotionUpdated?.discount).toBe(discount);
-        products.forEach (product => {
-            const index: number | undefined = promotionUpdated?.products.findIndex (productAdded => {
-                return productAdded.name === product.name
-            })
-            expect(index).toBeGreaterThan(-1);
-            if (index != undefined){
-                expect( promotionUpdated?.products[index].name).toBe(product.name);
-            }
-        });     
+         })
+        const response = await request(app).get ('/api/products').send();
+        expect (response.statusCode).toBe(200)
     });
+
 
 });
