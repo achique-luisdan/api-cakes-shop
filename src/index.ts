@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import routers from './core/api';
+import routers from './apis/api';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 

@@ -9,13 +9,17 @@ export class Product {
     @Column()
     name: string;
 
-    @Column()
+    @Column({
+        nullable: true,
+    })
     description: string;
 
     @Column()
     price: number;
 
-    @Column()
+    @Column({
+        nullable: true,
+    })
     image: string;
 
     

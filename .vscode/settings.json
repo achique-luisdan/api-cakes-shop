@@ -7,5 +7,9 @@
             "database": "${workspaceFolder:api-cakes-shop}/data/database.db"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "cSpell.words": [
+        "testhelper",
+        "typeorm"
+    ]
 }

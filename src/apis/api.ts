@@ -9,4 +9,5 @@ router.get('/promotions', async (request: Request, response: Response) => {
    response.json (promotions); 
 });
 
+
 export default router;
