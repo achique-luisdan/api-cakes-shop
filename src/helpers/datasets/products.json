@@ -50,7 +50,8 @@
         "id": 8,
         "name": "Tarta ganache de chocolate y plátano",
         "price": 7.0,
-        "promotionsId": []
+        "promotionsId": [2, 4],
+        "bestPromotionId": 2
     },
     {
         "id": 9,

@@ -70,8 +70,17 @@ describe('PROMOCIONES', () => {
       });
     });
 
-    test('Si un producto tiene varias promociones, indicar la promoción con mayor descuento', async () => {
+    test('Si producto tiene varias promociones, indicar la promoción con mayor descuento', async () => {
       const PRODUCT_WITH_PROMOTIONS = PRODUCTS.filter (PRODUCT => { return PRODUCT.promotionsId.length > 0});
+      const response = await request(app).get ('/api/promotions').send();
+      expect (response.statusCode).toBe(200)
+      PRODUCT_WITH_PROMOTIONS.forEach ((PRODUCT, index) => {
+        expect(response.body[index].bestPromotion.id).toBe(PRODUCT.bestPromotionId)
+       })
+    });
+
+    test('Si promociones asociadas a un producto tienen el mismo descuento, seleccionar la primera', async () => {
+      const PRODUCT_WITH_PROMOTIONS = PRODUCTS.filter (PRODUCT => { return PRODUCT.promotionsId.length > 0 && PRODUCT.id === 8});
       const response = await request(app).get ('/api/promotions').send();
       expect (response.statusCode).toBe(200)
       PRODUCT_WITH_PROMOTIONS.forEach ((PRODUCT, index) => {
