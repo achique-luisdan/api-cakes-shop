@@ -34,7 +34,7 @@ describe('PROMOCIONES', () => {
         });
     });
 
-    test('Crear nuevas promociones', async () => {
+    test('Crea nuevas promociones', async () => {
       PROMOTIONS.forEach ( async PROMO => {
         const promotion: Promotion = PROMO as Promotion;
         const delegate: PromotionDelegate = new PromotionDelegate();
@@ -47,7 +47,7 @@ describe('PROMOCIONES', () => {
       });
     });
 
-    test('Asociar promociones a productos', async () => {
+    test('Asocia promociones a productos', async () => {
       PRODUCTS.forEach (async PRODUCT => {
         const productDelegate: ProductDelegate = new ProductDelegate();
         let product: Product = new Product ();
@@ -70,16 +70,21 @@ describe('PROMOCIONES', () => {
       });
     });
 
-    test('Si producto tiene varias promociones, indicar la promoción con mayor descuento', async () => {
-      const PRODUCT_WITH_PROMOTIONS = PRODUCTS.filter (PRODUCT => { return PRODUCT.promotionsId.length > 0});
+    test('Si producto tiene varias promociones, indica la promoción con mayor descuento', async () => {
+      const PRODUCT_WITH_PROMOTIONS = PRODUCTS.filter (PRODUCT => { return PRODUCT.promotionsId.length > 0 && PRODUCT});
       const response = await request(app).get ('/api/promotions').send();
-      expect (response.statusCode).toBe(200)
-      PRODUCT_WITH_PROMOTIONS.forEach ((PRODUCT, index) => {
-        expect(response.body[index].bestPromotion.id).toBe(PRODUCT.bestPromotionId)
+      expect (response.statusCode).toBe(200);
+      PRODUCT_WITH_PROMOTIONS.forEach (PRODUCT => {
+        const index: number = response.body.findIndex ((product: { id: number; }) => { return product.id === PRODUCT.id})
+        if (index > -1){
+          if (response.body[index].promotions.length > 0){
+            expect(response.body[index].bestPromotion.id).toBe(PRODUCT.bestPromotionId);
+         }
+        }
        })
     });
 
-    test('Si promociones asociadas a un producto tienen el mismo descuento, seleccionar la primera', async () => {
+    test('Si promociones asociadas a un producto tienen mismo descuento, selecciona la primera', async () => {
       const PRODUCT_WITH_PROMOTIONS = PRODUCTS.filter (PRODUCT => { return PRODUCT.promotionsId.length > 0 && PRODUCT.id === 8});
       const response = await request(app).get ('/api/promotions').send();
       expect (response.statusCode).toBe(200)
@@ -88,4 +93,15 @@ describe('PROMOCIONES', () => {
        })
     });
 
+    test('Si promoción desactivada esta asociada a un producto, no mostrar promoción', async () => {
+      const PROMOTIONS_NOT_ACTIVES = PROMOTIONS.filter (PROMO => { return !PROMO.isActive});
+      const response = await request(app).get ('/api/promotions').send();
+      expect (response.statusCode).toBe(200)
+      response.body.forEach ((product: { promotions: { id: number; }[]; }) => {
+        product.promotions.forEach ((promo: { id: number; }) => {
+          expect (PROMOTIONS_NOT_ACTIVES.findIndex (PROMO_NOT_ACTIVE => PROMO_NOT_ACTIVE.id === promo.id)).toBe(-1) ;
+        });
+      })
+       
+    });
 });

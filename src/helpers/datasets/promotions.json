@@ -2,21 +2,31 @@
     {
         "id": 1,
         "name": "Jueves de feria",
-        "discount": 50
+        "discount": 50,
+        "isActive": true
     },
     {
         "id": 2,
         "name": "Martes en familia",
-        "discount": 20
+        "discount": 20,
+        "isActive": true
     },
     {
         "id": 3,
         "name": "Sábado de fiesta",
-        "discount": 60
+        "discount": 60,
+        "isActive": true
     },
     {
         "id": 4,
         "name": "Domingo de visita",
-        "discount": 20
+        "discount": 20,
+        "isActive": true
+    },
+    {
+        "id": 5,
+        "name": "Recuperate TQM",
+        "discount": 25,
+        "isActive": false
     }
 ]

@@ -15,4 +15,7 @@ export class Promotion {
 
     @ManyToMany(() => Product)
     products: Product[]
+
+    @Column({ default: true })
+    isActive: boolean;
 }
