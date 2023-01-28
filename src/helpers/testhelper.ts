@@ -28,8 +28,8 @@ export class TestHelper {
         });
     }
 
-    teardownTestDB() {
-        this.dbConnect.close();
+    async teardownTestDB() {
+        await this.dbConnect.destroy()
         this.testdb.close();
     }
 
