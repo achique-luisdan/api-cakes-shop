@@ -5,7 +5,7 @@ import DATASETS from '../helpers/datasets.json';
 import { Promotion } from "../entities/promotion";
 import { PromotionDelegate } from "../delegates/promotion";
 import request from 'supertest'
-import app from '../index'
+import app from '../app'
 
 beforeAll(async () => {
     await TestHelper.instance.setupTestDB();
