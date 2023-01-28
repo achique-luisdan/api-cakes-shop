@@ -38,15 +38,21 @@ npm run start
 npm run test
 ```
 
-* Crea nuevos productos
+✅ Crea nuevos productos
 
-* Crear nuevas promociones
+✅ Crea nuevas promociones
 
-* Asociar promociones a productos
+✅ Asocia promociones a productos
+
+✅ Si producto tiene varias promociones, indica la promoción con mayor descuento
+
+✅ Si promociones asociadas a un producto tienen mismo descuento, selecciona la primera
+
+✅ Si promoción desactivada esta asociada a un producto, no mostrar promoción
 
 
 ## Base de datos :floppy_disk:
 
 ### Modelo Lógico Relacional
 
-![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.1.png "Modelo Lógico Relacional")
+![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.2.png "Modelo Lógico Relacional")

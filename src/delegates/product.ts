@@ -27,10 +27,11 @@ export class ProductDelegate {
            },
         }) as ProductSchema[]
         const withPromotions: ProductSchema [] = products.filter (product => {
-            return product.promotions.length > 0;
+            return product.promotions.filter(promotion => { return promotion.isActive}).length > 0;
         })
         withPromotions.map (product => {
             const promotionsDiscount: number [] =[];
+            product.promotions =  product.promotions.filter(promotion => { return promotion.isActive})
             product.promotions.forEach (promotion => {
                 promotionsDiscount.push (promotion.discount)
             })
