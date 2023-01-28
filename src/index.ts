@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
   res.send('Bienvenido')
 });
 
-// app.listen(port, () => {
-//   // console.log(`API REST se escucha en http://localhost:${port}`)
-// });
+app.listen(port, () => {
+  // console.log(`API REST Cakes Shop se escucha en http://localhost:${port}`);
+});
 
 export default app;
