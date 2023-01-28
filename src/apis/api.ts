@@ -1,16 +1,12 @@
 import { Router, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { Product } from "../entities/product";
+import { ProductDelegate } from "../delegates/product";
 
 const router = Router();
 
 router.get('/promotions', async (request: Request, response: Response) => {
-   const products = await getRepository (Product).find({  
-      relations: {
-         promotions: true,
-     },
-    });
-   response.json (products); 
+   const delegate: ProductDelegate = new ProductDelegate;
+   response.json (await delegate.productsWithPromotions()); 
 });
 
 export default router;
