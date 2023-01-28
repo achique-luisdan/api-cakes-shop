@@ -49,4 +49,4 @@ npm run test
 
 ### Modelo Lógico Relacional
 
-![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.1.png "Modelo Lógico Relacional").
+![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.1.png "Modelo Lógico Relacional")
