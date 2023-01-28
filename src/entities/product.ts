@@ -7,19 +7,19 @@ export class Product {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ type: 'varchar', length: 120 })
     name: string;
 
     @Column({
-        nullable: true,
+        type: 'text', nullable: true,
     })
     description: string;
 
-    @Column()
+    @Column({type: 'float'})
     price: number;
 
     @Column({
-        nullable: true,
+        type: 'varchar', length: 255, nullable: true,
     })
     image: string;
 

@@ -7,10 +7,10 @@ export class Promotion {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ type: 'varchar', length: 120, unique: true, })
     name: string;
 
-    @Column()
+    @Column({type: 'float'})
     discount: number;
 
     @ManyToMany(() => Product)

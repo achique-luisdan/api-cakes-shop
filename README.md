@@ -1,15 +1,15 @@
 
 ## Instalación 🔧
 
-Pasos instalar las herramientas necesarias para la ejecución del backend:
+Para instalar las herramientas necesarias:
 
 ### Paso 1. Instalar Node.js
 
-Para ello puedes acceder al sitio oficial de Node.js y descargar el instalador.
+Acceder al sitio oficial de [Node.js](https://nodejs.org/), descargar e instalar.
 
 ### Paso 2. Instalar dependencias del proyecto
 
-Accede a la carpeta del proyecto en el directorio raíz ejecuta el siguiente comando:
+Accede a la carpeta del proyecto y ejecuta el siguiente comando:
 
 ```
 npm install
@@ -21,15 +21,16 @@ npm install
 npm run build
 ```
 
-### Paso 4. Levantar Servidor
+### Paso 4. Levantar servidor de desarrollo
 
 ```
 npm run start
 ```
 
-> Consultar Promociones
+> **Consultar Promociones**: [/api/promotions](http://localhost:3000/api/promotions)
 
-http://localhost:3000/api/promotions
+
+
 
 ## Pruebas unitarias 💋
 
@@ -42,3 +43,10 @@ npm run test
 * Crear nuevas promociones
 
 * Asociar promociones a productos
+
+
+## Base de datos :floppy_disk:
+
+### Modelo Lógico Relacional
+
+![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.1.png "Modelo Lógico Relacional").
