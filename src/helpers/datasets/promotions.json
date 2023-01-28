@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Jueves de feria",
+        "discount": 50
+    },
+    {
+        "id": 2,
+        "name": "Martes en familia",
+        "discount": 20
+    },
+    {
+        "id": 3,
+        "name": "Sábado de fiesta",
+        "discount": 60
+    },
+    {
+        "id": 4,
+        "name": "Domingo de visita",
+        "discount": 20
+    }
+]
