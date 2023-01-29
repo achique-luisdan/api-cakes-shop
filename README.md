@@ -52,8 +52,10 @@ npm run test
 
 ✅ Calcula precio de producto con descuento por cada promoción
 
+✅ Crea nuevo pedido
+
 ## Base de datos :floppy_disk:
 
 ### Modelo Lógico Relacional
 
-![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.2.png "Modelo Lógico Relacional")
+![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.3.png "Modelo Lógico Relacional")
