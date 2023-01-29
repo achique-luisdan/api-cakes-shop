@@ -27,6 +27,8 @@ npm run build
 npm run start
 ```
 
+### Paso 5. Explorar endpoints API
+
 > **Consultar promociones**: GET [/api/promotions](http://localhost:3000/api/promotions)
 
 > **Consultar productos**: GET [/api/products](http://localhost:3000/api/products)
@@ -63,6 +65,26 @@ npm run start
         "name": "Cheesecake de Nutella", 
         "price": 19,
         "image": "https://images.pexels.com/photos/15031855/pexels-photo-15031855.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+]
+```
+
+> **Crear promociones**: POST [/api/promotions](http://localhost:3000/api/promotions)
+
+> *Request:*
+```json
+[
+    {
+        "id": 1,
+        "name": "Jueves de feria",
+        "discount": 50,
+        "isActive": true
+    },
+    {
+        "id": 2,
+        "name": "Martes en familia",
+        "discount": 20,
+        "isActive": true
     }
 ]
 ```

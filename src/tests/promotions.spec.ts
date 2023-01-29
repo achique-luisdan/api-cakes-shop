@@ -46,16 +46,14 @@ describe('PROMOCIONES', () => {
     });
 
     test('Crea nuevas promociones', async () => {
-      PROMOTIONS.forEach ( async PROMO => {
-        const promotion: Promotion = PROMO as Promotion;
-        const delegate: PromotionDelegate = new PromotionDelegate();
-        const saved = await delegate.createPromotion(promotion);
-        const created = await delegate.readPromotion(saved.name);
-        expect(created.name).toBe(PROMO.name);
-        expect(created.discount).toBe(PROMO.discount);
-        expect(created.id).toBeGreaterThan(0);
-        expect(created.id).toBe(PROMO.id);
-      });
+      const response = await request(app).post ('/api/promotions').send(PROMOTIONS as Promotion[]);
+      expect (response.statusCode).toBe(201);
+      PROMOTIONS.forEach (PROMOTION => {
+        const index: number = response.body.findIndex ((promotion: { name: string; discount: number}) => {
+          return promotion.name === PROMOTION.name && promotion.discount === PROMOTION.discount;
+        })
+        expect (index).toBeGreaterThan(-1);  
+      })
     });
 
     test('Asocia promociones a productos', async () => {

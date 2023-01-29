@@ -39,4 +39,17 @@ export class PromotionDelegate {
         })
         return promotion;
     }
+
+    async savePromotions(promotions: Promotion[]): Promise<Promotion[]> {
+        const productRepository = getRepository(Promotion);
+        const promotionsSaved: Promotion [] = []; 
+        const saving = async () => {
+          for (const promotion of promotions) {
+            const saved = await productRepository.save(promotion)
+            promotionsSaved.push(saved);
+          }
+          return promotionsSaved;
+        }
+        return saving() as unknown as Promise<Promotion[]>;
+    }
 }
