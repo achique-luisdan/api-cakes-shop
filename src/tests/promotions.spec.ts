@@ -102,6 +102,23 @@ describe('PROMOCIONES', () => {
           expect (PROMOTIONS_NOT_ACTIVES.findIndex (PROMO_NOT_ACTIVE => PROMO_NOT_ACTIVE.id === promo.id)).toBe(-1) ;
         });
       })
-       
+    });
+
+    test('Calcula precio de producto con descuento por cada promoción', async () => {
+      const PRODUCT_WITH_PROMOTIONS = PRODUCTS.filter (PRODUCT => { return PRODUCT.promotionsId.length > 0});
+      const response = await request(app).get ('/api/promotions').send();
+      expect (response.statusCode).toBe(200)
+      PRODUCT_WITH_PROMOTIONS.forEach (PRODUCT => {
+        const index: number = response.body.findIndex ((product: { id: number; }) => { return product.id === PRODUCT.id})
+        if (index > -1){
+          if (response.body[index].promotions.length > 0){
+            let promotionsPrice: number [] = [];
+            response.body[index].promotions.forEach ((promotion: { price: number; }) => {
+              promotionsPrice.push(Number (promotion.price))
+            })
+            expect(promotionsPrice).toStrictEqual(PRODUCT.promotionsPrice);
+         }
+        }
+       })
     });
 });

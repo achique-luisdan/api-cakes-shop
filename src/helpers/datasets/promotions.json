@@ -25,7 +25,7 @@
     },
     {
         "id": 5,
-        "name": "Recuperate TQM",
+        "name": "Recuperate",
         "discount": 25,
         "isActive": false
     }
