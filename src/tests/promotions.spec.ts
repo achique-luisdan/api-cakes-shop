@@ -8,6 +8,11 @@ import app from '../app'
 
 import PRODUCTS from '../helpers/datasets/products.json';
 import PROMOTIONS from '../helpers/datasets/promotions.json';
+import { Order } from "../entities/order";
+import { ProductSchema } from "../schemas/product";
+import { Item } from "../entities/item";
+import ORDERS from '../helpers/datasets/orders.json';
+import {OrderDelegate} from "../delegates/order"
 
 beforeAll(async () => {
     await TestHelper.instance.setupTestDB();
@@ -121,4 +126,38 @@ describe('PROMOCIONES', () => {
         }
        })
     });
+
+    test('Crea nuevo pedido', async () => {
+      const ORDER = ORDERS[0];
+          let order: Order = new Order();
+          order.items = [];
+          const productsId: number[] = [];
+          ORDER.products.forEach (PRODUCT => {
+              productsId.push (PRODUCT.productId)
+          })
+          const products = PRODUCTS.filter (product => {
+            return productsId.includes(product.id)
+          })
+          expect(products.length).toBe(productsId.length);  
+          products.forEach (async (product, index) => {
+              let item: Item = new Item();
+              item.productId = product.id;
+              item.name = product.name;
+              item.price = product.promotionsPrice[product.bestPromotionIndex as number] 
+              item.discount =  100 - (product.promotionsPrice[product.bestPromotionIndex as number] * 100 / product.price);
+              expect(item.productId).toBe(ORDER.products[index].productId);
+              item.quantity = ORDER.products[index].quantity;
+              order.items.push (item);
+          });
+          const response = await request(app).post ('/api/orders').send(order);
+          expect (response.statusCode).toBe(200);
+          let productsCreatedId: number [] = []
+          response.body.items.forEach ((item: { productId: number; }) => {
+            productsCreatedId.push (item.productId);
+          })
+          order.items.forEach (item => {
+            expect (productsCreatedId.includes(item.productId)).toBe(true);
+          })
+      });
+  
 });
