@@ -3,6 +3,6 @@ import { Promotion } from "../entities/promotion";
 import { PromotionSchema } from "./promotion";
 
 export class ProductSchema extends Product {
-    bestPromotion?: Promotion;
+    bestPromotion?: PromotionSchema;
     promotions: PromotionSchema[];
 }

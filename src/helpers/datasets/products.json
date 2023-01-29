@@ -5,7 +5,8 @@
         "price": 12.0,
         "promotionsId": [2, 4],
         "promotionsPrice": [9.6, 9.6],
-        "bestPromotionId": 2
+        "bestPromotionId": 2,
+        "bestPromotionIndex": 0
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "price": 6.0,
         "promotionsId": [1, 2, 3, 5],
         "promotionsPrice": [3, 4.8, 2.4],
-        "bestPromotionId": 3
+        "bestPromotionId": 3,
+        "bestPromotionIndex": 2
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "price": 19.0,
         "promotionsId": [1, 2],
         "promotionsPrice": [9.5, 15.2],
-        "bestPromotionId": 1
+        "bestPromotionId": 1,
+        "bestPromotionIndex": 0
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "price": 23.0,
         "promotionsId": [1, 2, 3],
         "promotionsPrice": [11.5, 18.4, 9.2],
-        "bestPromotionId": 3    
+        "bestPromotionId": 3,
+        "bestPromotionIndex": 2
     },
     {
         "id": 5,
@@ -37,21 +41,24 @@
         "price": 14.0,
         "promotionsId": [1, 2, 3],
         "promotionsPrice": [7, 11.2, 5.6],
-        "bestPromotionId": 3    
+        "bestPromotionId": 3,
+        "bestPromotionIndex": 2    
     },
     {
         "id": 6,
         "name": "Ginger cheesecake o tarta de queso y jengibre",
         "price": 24.0,
         "promotionsId": [5],  
-        "promotionsPrice": []
+        "promotionsPrice": [],
+        "bestPromotionIndex": null  
     },
     {
         "id": 7,
         "name": "Tarta de tres chocolates",
         "price": 21.0,
         "promotionsId": [5],
-        "promotionsPrice": []
+        "promotionsPrice": [],
+        "bestPromotionIndex": null  
     }, 
     {
         "id": 8,
@@ -59,7 +66,8 @@
         "price": 7.0,
         "promotionsId": [2, 4, 5],
         "bestPromotionId": 2,
-        "promotionsPrice": [5.6, 5.6]
+        "promotionsPrice": [5.6, 5.6],
+        "bestPromotionIndex": 0 
     },
     {
         "id": 9,
@@ -67,13 +75,15 @@
         "price": 26.0,
         "promotionsId": [1,2,3],
         "bestPromotionId": 3,
-        "promotionsPrice": [13, 20.8, 10.4]
+        "promotionsPrice": [13, 20.8, 10.4],
+        "bestPromotionIndex": 2
     },
     {
         "id": 10,
         "name": "Tarta fina de mango",
         "price": 30.0,
         "promotionsId": [5],
-        "promotionsPrice": []
+        "promotionsPrice": [],
+        "bestPromotionIndex": null
     }
 ]
