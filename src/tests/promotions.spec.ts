@@ -1,18 +1,20 @@
-import { Product } from "../entities/product";
-import { ProductDelegate } from "../delegates/product";
-import { TestHelper } from "../helpers/testhelper";
-import { Promotion } from "../entities/promotion";
-import { PromotionDelegate } from "../delegates/promotion";
 import request from 'supertest'
-import app from '../app'
+
+import { TestHelper } from "../helpers/testhelper";
+
+import { PromotionDelegate } from "../delegates/promotion";
+import { ProductDelegate } from "../delegates/product";
+import { Promotion } from "../entities/promotion";
+import { Product } from "../entities/product";
+import { Order } from "../entities/order";
+import { Item } from "../entities/item";
 
 import PRODUCTS from '../helpers/datasets/products.json';
 import PROMOTIONS from '../helpers/datasets/promotions.json';
-import { Order } from "../entities/order";
-import { ProductSchema } from "../schemas/product";
-import { Item } from "../entities/item";
 import ORDERS from '../helpers/datasets/orders.json';
-import {OrderDelegate} from "../delegates/order"
+
+import app from '../app'
+
 
 beforeAll(async () => {
     await TestHelper.instance.setupTestDB();
@@ -140,14 +142,19 @@ describe('PROMOCIONES', () => {
           })
           expect(products.length).toBe(productsId.length);  
           products.forEach (async (product, index) => {
-              let item: Item = new Item();
-              item.productId = product.id;
-              item.name = product.name;
+            let item: Item = new Item();
+            item.productId = product.id;
+            expect(item.productId).toBe(ORDER.products[index].productId);
+            item.quantity = ORDER.products[index].quantity;
+            order.items.push (JSON.parse (JSON.stringify (item)));
+            item.name = product.name;
+            if (product.bestPromotionIndex != null){
               item.price = product.promotionsPrice[product.bestPromotionIndex as number] 
               item.discount =  100 - (product.promotionsPrice[product.bestPromotionIndex as number] * 100 / product.price);
-              expect(item.productId).toBe(ORDER.products[index].productId);
-              item.quantity = ORDER.products[index].quantity;
-              order.items.push (item);
+            } else {
+              item.price = product.price;
+              item.discount = 0;
+            }
           });
           const response = await request(app).post ('/api/orders').send(order);
           expect (response.statusCode).toBe(201);

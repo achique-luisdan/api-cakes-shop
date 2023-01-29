@@ -55,7 +55,7 @@ export class ProductDelegate {
       },
    }) as ProductSchema[]
    let withPromotions: ProductSchema [] = products.filter (product => {
-       return product.promotions.filter(promotion => { return promotion.isActive}).length > 0;
+       return product.promotions.filter(promotion => { return promotion.isActive}).length >= 0;
    })
    withPromotions.map (product => {
        const promotionsDiscount: number [] =[];
