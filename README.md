@@ -50,6 +50,7 @@ npm run test
 
 ✅ Si promoción desactivada esta asociada a un producto, no mostrar promoción
 
+✅ Calcula precio de producto con descuento por cada promoción
 
 ## Base de datos :floppy_disk:
 
