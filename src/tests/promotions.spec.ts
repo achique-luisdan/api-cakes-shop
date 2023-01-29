@@ -150,7 +150,7 @@ describe('PROMOCIONES', () => {
               order.items.push (item);
           });
           const response = await request(app).post ('/api/orders').send(order);
-          expect (response.statusCode).toBe(200);
+          expect (response.statusCode).toBe(201);
           let productsCreatedId: number [] = []
           response.body.items.forEach ((item: { productId: number; }) => {
             productsCreatedId.push (item.productId);

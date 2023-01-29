@@ -13,6 +13,6 @@ router.get('/promotions', async (request: Request, response: Response) => {
 
 router.post('/orders', async (request: Request, response: Response) => {
       const delegate: OrderDelegate = new OrderDelegate();
-      response.json (await delegate.saveOrder (request.body as Order));
+      response.status(201).json (await delegate.saveOrder (request.body as Order));
 });
 export default router;
