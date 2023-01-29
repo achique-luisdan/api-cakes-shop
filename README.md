@@ -27,9 +27,20 @@ npm run build
 npm run start
 ```
 
-> **Consultar Promociones**: [/api/promotions](http://localhost:3000/api/promotions)
+> **Consultar Promociones**: GET [/api/promotions](http://localhost:3000/api/promotions)
 
-
+> **Crear Pedido**: POST [/api/orders](http://localhost:3000/api/orders)
+```json
+// Request JSON
+{
+    "items": [
+        {
+            "productId": 1,
+            "quantity": 12
+        }
+    ]
+}
+```
 
 
 ## Pruebas unitarias 💋

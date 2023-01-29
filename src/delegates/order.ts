@@ -30,7 +30,6 @@ export class OrderDelegate {
             }
             return item;
         })
-        console.log ('=>', order.items)
         return await orderRepository.save(order);
     }
 }
