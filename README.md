@@ -30,8 +30,9 @@ npm run start
 > **Consultar Promociones**: GET [/api/promotions](http://localhost:3000/api/promotions)
 
 > **Crear Pedido**: POST [/api/orders](http://localhost:3000/api/orders)
+
+> *Request:*
 ```json
-// Request JSON
 {
     "items": [
         {
