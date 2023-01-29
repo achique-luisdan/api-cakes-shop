@@ -28,17 +28,21 @@ afterAll(() => {
 describe('PROMOCIONES', () => {
 
     test('Crea nuevos productos', async () => {
+      let products: Product [] = [];
         PRODUCTS.forEach (async PRODUCT => {
             const product: Product = new Product();
             product.name = PRODUCT.name;
             product.price = PRODUCT.price
-            const delegate: ProductDelegate = new ProductDelegate();
-            const saved: Product = await delegate.saveProduct (product);
-            const created: Product = await delegate.readProduct (saved.name);
-            expect(created.name).toBe(PRODUCT.name);
-            expect(created.price).toBe(PRODUCT.price);
-            expect(created.id).toBeGreaterThan(0);
+            products.push (product);
         });
+        const response = await request(app).post ('/api/products').send(products);
+        expect (response.statusCode).toBe(201);
+        products.forEach (product => {
+          const index: number = response.body.findIndex ((productElement: { name: string; price: number}) => {
+            return productElement.name === product.name && productElement.price === product.price;
+          })
+          expect (index).toBeGreaterThan(-1);  
+        })
     });
 
     test('Crea nuevas promociones', async () => {
