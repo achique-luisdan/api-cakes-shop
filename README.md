@@ -44,7 +44,7 @@ npm run start
     ]
 }
 ```
-> **Crear productos (masivo)**: POST [/api/products](http://localhost:3000/api/products)
+> **Crear productos**: POST [/api/products](http://localhost:3000/api/products)
 
 > *Request:*
 ```json
