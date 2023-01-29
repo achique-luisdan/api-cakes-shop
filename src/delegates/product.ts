@@ -38,6 +38,11 @@ export class ProductDelegate {
             const discountMax: number = Math.max(...promotionsDiscount);
             const promotionIndex: number = promotionsDiscount.findIndex( discount => { return discount === discountMax})
             product.bestPromotion = product.promotions[promotionIndex]
+            product.promotions.map (promotion => {
+                promotion.price =  product.price - (product.price * (promotion.discount / 100));
+                promotion.price = Number(promotion.price.toFixed(2));
+                return promotion
+            })
             return product;
         })
         return withPromotions;

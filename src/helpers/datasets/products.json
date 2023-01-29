@@ -4,6 +4,7 @@
         "name": "Tarta mousse de chocolate y baileys",
         "price": 12.0,
         "promotionsId": [2, 4],
+        "promotionsPrice": [9.6, 9.6],
         "bestPromotionId": 2
     },
     {
@@ -11,6 +12,7 @@
         "name": "Tarta de fresas con crema de vainilla",
         "price": 6.0,
         "promotionsId": [1, 2, 3, 5],
+        "promotionsPrice": [3, 4.8, 2.4],
         "bestPromotionId": 3
     },
     {
@@ -18,6 +20,7 @@
         "name": "Cheesecake de Nutella",
         "price": 19.0,
         "promotionsId": [1, 2],
+        "promotionsPrice": [9.5, 15.2],
         "bestPromotionId": 1
     },
     {
@@ -25,6 +28,7 @@
         "name": "Tarta fácil de hojaldre con fresas y almendra",
         "price": 23.0,
         "promotionsId": [1, 2, 3],
+        "promotionsPrice": [11.5, 18.4, 9.2],
         "bestPromotionId": 3    
     },
     {
@@ -32,38 +36,44 @@
         "name": "Banana cream pie",
         "price": 14.0,
         "promotionsId": [1, 2, 3],
+        "promotionsPrice": [7, 11.2, 5.6],
         "bestPromotionId": 3    
     },
     {
         "id": 6,
         "name": "Ginger cheesecake o tarta de queso y jengibre",
         "price": 24.0,
-        "promotionsId": [5]    
+        "promotionsId": [5],  
+        "promotionsPrice": []
     },
     {
         "id": 7,
         "name": "Tarta de tres chocolates",
         "price": 21.0,
-        "promotionsId": [5]
+        "promotionsId": [5],
+        "promotionsPrice": []
     }, 
     {
         "id": 8,
         "name": "Tarta ganache de chocolate y plátano",
         "price": 7.0,
         "promotionsId": [2, 4, 5],
-        "bestPromotionId": 2
+        "bestPromotionId": 2,
+        "promotionsPrice": [5.6, 5.6]
     },
     {
         "id": 9,
         "name": "Tarta fina de manzana y chocolate blanco",
         "price": 26.0,
         "promotionsId": [1,2,3],
-        "bestPromotionId": 3    
+        "bestPromotionId": 3,
+        "promotionsPrice": [13, 20.8, 10.4]
     },
     {
         "id": 10,
         "name": "Tarta fina de mango",
         "price": 30.0,
-        "promotionsId": [5]
+        "promotionsId": [5],
+        "promotionsPrice": []
     }
 ]
