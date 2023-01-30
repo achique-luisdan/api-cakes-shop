@@ -32,7 +32,7 @@ npm install
 
 Serán instaladas las siguientes dependencias: 
 
-:hammer_and_wrench: Express.js v4.18.2      :hammer_and_wrench: TypeScript v4.9.4       :hammer_and_wrench: TypeORM v0.3.11 :hammer_and_wrench: SQLite3 v5.1.4      :hammer_and_wrench: CORS v2.8.5
+:hammer_and_wrench: [Express.js v4.18.2](https://expressjs.com/)      :hammer_and_wrench: [TypeScript v4.9.4](https://www.typescriptlang.org/)       :hammer_and_wrench: [TypeORM v0.3.11](https://typeorm.io/) :hammer_and_wrench: [SQLite3 v5.1.4](https://www.npmjs.com/package/sqlite3)      :hammer_and_wrench: [CORS v2.8.5](https://www.npmjs.com/package/cors)
 
 ### Paso 3. Compilar proyecto
 
