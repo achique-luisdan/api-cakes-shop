@@ -1,5 +1,18 @@
+# API Cakes Shop
 
-## Instalación 🔧
+Tienda online de Tortas
+
+## Características (Features) ❤️
+
+:two_hearts: Landing page con hero vistoso *(frontend)*
+
+:two_hearts: Catálogo de productos
+
+:two_hearts: Promociones con descuento
+
+:two_hearts: Creación de pedidos
+
+## Instalación (Install) 🔧
 
 Para instalar las herramientas necesarias:
 
@@ -89,7 +102,7 @@ npm run start
 ]
 ```
 
-## Pruebas unitarias 💋
+## Pruebas unitarias (Unit tests) 💋
 
 ```
 npm run test
@@ -111,7 +124,7 @@ npm run test
 
 ✅ Crea nuevo pedido
 
-## Base de datos :floppy_disk:
+## Base de datos (Database) :floppy_disk:
 
 ### Modelo Lógico Relacional
 
