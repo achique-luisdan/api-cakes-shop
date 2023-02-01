@@ -153,3 +153,7 @@ npm run test
 ### Modelo Lógico Relacional
 
 ![Modelo Lógico Relacional](./docs/MODELO_LOGICO_RELACIONAL_v0.3.png "Modelo Lógico Relacional")
+
+## Mejora Continua 🚀
+
+:two_hearts: Emitir comprobante de pedido
